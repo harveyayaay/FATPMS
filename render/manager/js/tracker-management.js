@@ -25,3 +25,12 @@ function cancelProdEdit()
 {
 	location.reload();
 }
+function showAddActivityFields()
+{
+	interfaceRequest("productive-activities-add.php", 'add-activity', null);
+}
+function closeAddActivityFields()
+{
+	interfaceRequest("add-activity-div.php", 'add-activity', null);
+}
+

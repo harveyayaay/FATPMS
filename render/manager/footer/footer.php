@@ -49,7 +49,7 @@
     <script src="../../../../components/build/js/custom.min.js"></script>
 
     <!-- Additional AJAX Scripts -->
-    <script src="tracker-management.js"></script>
+    <script src="../../js/tracker-management.js"></script>
 
 
 </html>

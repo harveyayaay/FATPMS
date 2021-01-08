@@ -58,30 +58,23 @@
     </div>
   </div>
 </div>
-<div class="col-md-12 col-sm-12 ">  
-  <div class="x_content">
-    <div class="row">
-      <div class="col-sm-12">
-        <div class="card-box table-responsive">
-          <table id="datatable-responsive" class="table table-striped jambo_table dt-responsive nowrap" cellspacing="0" width="100%">
-            <thead>
-              <td><p class="add-link"><i class="glyphicon glyphicon-plus"></i> Add Activity</p></td>
-            </thead>
-          </table>
-        </div>
-      </div>
-    </div>
+<div class="col-md-12 col-sm-12">  
+  <div class="x_panel add-container" id="add-activity">
+    <?php include 'add-activity-div.php'; ?>
   </div>
 </div>
 
+
 <style type="text/css">
-  .add-link
+  .add-container
   {
+    background-color: #2A3F54;
     color: #fff;
   }
   .add-link:hover
   {
     cursor: pointer;
+    border-bottom: .5px solid #fff;;
   }
 
 </style>

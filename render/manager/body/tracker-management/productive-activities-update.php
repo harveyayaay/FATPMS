@@ -11,7 +11,7 @@
         <td><input type="" name="" class="form-control" value="<?php echo $result_prod_data['task_list_importance']; ?>"></td>
         <td>
           <!-- <div style="display: flex; justify-content: space-around; "> -->
-            <a data-toggle="modal" data-target=".bs-example-modal-sm"><i class="fa fa-check"></i> Save</a>
+            <a data-toggle="modal" data-target=".confirmation-modal"><i class="fa fa-check"></i> Save</a>
             <a onclick="cancelProdEdit()"><i class="fa fa-close (alias)"></i> Cancel</a>
 
           <!-- </div> -->
