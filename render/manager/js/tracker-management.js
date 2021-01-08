@@ -33,4 +33,34 @@ function closeAddActivityFields()
 {
 	interfaceRequest("add-activity-div.php", 'add-activity', null);
 }
+function addActivity()
+{
+	var title = document.getElementById('a-title');
+	var ptime = document.getElementById('a-process-time');
+	var sla = document.getElementById('a-sla');
+	var level = document.getElementById('a-level');
+
+	var send_data = 
+		"&title="+title.value+
+		"&ptime="+ptime.value+
+		"&sla="+sla.value+
+		"&level="+level.value;
+	interfaceRequest("add-change.php", 'page-change', send_data);
+}
+function updateActivity()
+{
+	var tid = document.getElementById('u-tid');
+	var title = document.getElementById('u-title');
+	var ptime = document.getElementById('u-ptime');
+	var sla = document.getElementById('u-sla');
+	var level = document.getElementById('u-level');
+
+	var send_data = 
+		"&tid="+tid.value+
+		"&title="+title.value+
+		"&ptime="+ptime.value+
+		"&sla="+sla.value+
+		"&level="+level.value;
+	interfaceRequest("update-change.php", 'page-change', send_data);
+}
 

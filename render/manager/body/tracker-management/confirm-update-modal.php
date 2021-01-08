@@ -1,5 +1,5 @@
 <!-- Small modal -->
-  <div class="modal fade confirmation-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal fade confirm-update-modal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
 
@@ -9,14 +9,12 @@
           </button>
         </div>
         <div class="modal-body">
-          <h4>Confirm Changes</h4>
-          <p>Are you sure that you want to save changes?</p>
+          <b>Confirm Changes?</b>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" onclick="updateActivity()" data-dismiss="modal">Save changes</button>
         </div>
-
       </div>
     </div>
   </div>

@@ -5,7 +5,6 @@
 		public $conn;
 
 		public
-			$task_list_id,
 			$task_list_title,
 			$task_list_process_time,
 			$task_list_sla,
@@ -16,48 +15,10 @@
 			$this->conn = $db;
 		} // function ends
 
-		function getTaskList($level)
-		{
-			$query = "SELECT *
- 					FROM `task_list_table`
-					WHERE `task_list_importance` = '$level'
-					ORDER BY `task_list_id`";
-
-			$stmt = $this->conn->prepare($query);
-			
-			if($stmt->execute())
-			{
-				return $stmt;
-			}
-			else
-			{
-				return false;
-			}
-		} //function  ends
-
-		function countTaskListImportance($importance)
-		{
-			$query = "SELECT COUNT(*) as COUNT
-					FROM `task_list_table`
-					WHERE `task_list_importance` = '$importance'";
-
-			$stmt = $this->conn->prepare($query);
-			
-			if($stmt->execute())
-			{
-				return $stmt;
-			}
-			else
-			{
-				return false;
-			}
-		} //function  ends
-
 		function addTaskList()
 		{
 			$query = "INSERT INTO `task_list_table`
 						SET 
-							task_list_id=:task_list_id,
 							task_list_title=:task_list_title,
 							task_list_process_time=:task_list_process_time,
 							task_list_sla=:task_list_sla,
@@ -65,13 +26,11 @@
 
 			$stmt = $this->conn->prepare($query);
 
-			$this->task_list = htmlspecialchars(strip_tags($this->task_list_id));
 			$this->task_list_title = htmlspecialchars(strip_tags($this->task_list_title));
 			$this->task_list_process_time = htmlspecialchars(strip_tags($this->task_list_process_time));
 			$this->task_list_sla = htmlspecialchars(strip_tags($this->task_list_sla));
 			$this->task_list_importance = htmlspecialchars(strip_tags($this->task_list_importance));
 
-			$stmt->bindParam(':task_list_id', $this->task_list_id);
 			$stmt->bindParam(':task_list_title', $this->task_list_title);
 			$stmt->bindParam(':task_list_process_time', $this->task_list_process_time);
 			$stmt->bindParam(':task_list_sla', $this->task_list_sla);
@@ -79,7 +38,7 @@
 			
 			if($stmt->execute())
 			{
-				header('location: ../../../render/manager/body/tracker-management.php');
+				return $stmt;
 			}
 			else
 			{
@@ -87,25 +46,25 @@
 			}
 		} //function  ends
 
-		function updateTaskListProd()
+		function updateTaskListProd($tid)
 		{
+			// used
+			
 			$query = "UPDATE `task_list_table`
 						SET 
-							task_list_id=:task_list_id,
 							task_list_title=:task_list_title,
 							task_list_process_time=:task_list_process_time,
 							task_list_sla=:task_list_sla,
-							task_list_importance=:task_list_importance";
+							task_list_importance=:task_list_importance
+						WHERE task_list_id = '$tid'";
 
 			$stmt = $this->conn->prepare($query);
 
-			$this->task_list = htmlspecialchars(strip_tags($this->task_list_id));
 			$this->task_list_title = htmlspecialchars(strip_tags($this->task_list_title));
 			$this->task_list_process_time = htmlspecialchars(strip_tags($this->task_list_process_time));
 			$this->task_list_sla = htmlspecialchars(strip_tags($this->task_list_sla));
 			$this->task_list_importance = htmlspecialchars(strip_tags($this->task_list_importance));
 
-			$stmt->bindParam(':task_list_id', $this->task_list_id);
 			$stmt->bindParam(':task_list_title', $this->task_list_title);
 			$stmt->bindParam(':task_list_process_time', $this->task_list_process_time);
 			$stmt->bindParam(':task_list_sla', $this->task_list_sla);
@@ -113,7 +72,7 @@
 			
 			if($stmt->execute())
 			{
-				header('location: ../../../render/manager/body/tracker-management.php');
+				return $stmt;
 			}
 			else
 			{
@@ -151,62 +110,9 @@
 			}
 		} //function  ends
 
-		function getTaskListProcessingTime($task_type)
-		{
-			$query = "SELECT `task_list_process_time`
-					FROM `task_list_table`
-					WHERE `task_list_id` = '$task_type'";
-
-			$stmt = $this->conn->prepare($query);
-			
-			if($stmt->execute())
-			{
-				return $stmt;
-			}
-			else
-			{
-				return false;
-			}
-		} //function  ends
-
-		function getTaskListData($tid)
-		{
-			$query = "SELECT *
-					FROM `task_list_table`
-					WHERE `task_list_id` = '$tid'";
-
-			$stmt = $this->conn->prepare($query);
-			
-			if($stmt->execute())
-			{
-				return $stmt;
-			}
-			else
-			{
-				return false;
-			}
-		} //function  ends
-
-		function getTaskId($task_title)
-		{
-			$query = "SELECT `task_list_id`
-					FROM `task_list_table`
-					WHERE `task_list_title` = '$task_title'";
-
-			$stmt = $this->conn->prepare($query);
-			
-			if($stmt->execute())
-			{
-				return $stmt;
-			}
-			else
-			{
-				return false;
-			}
-		} //function  ends
-
 		function getAllProd()
 		{
+			// used
 			$query = "SELECT *
 					FROM `task_list_table`
 					WHERE `task_list_importance` != 'Non-Productive'";
@@ -225,6 +131,7 @@
 
 		function getAllNonProd()
 		{
+			// used
 			$query = "SELECT *
 					FROM `task_list_table`
 					WHERE `task_list_importance` = 'Non-Productive'";
@@ -243,6 +150,7 @@
 
 		function getProdUsingTitle($title)
 		{
+			// used
 			$query = "SELECT *
 					FROM task_list_table
 					WHERE task_list_importance != 'Non-Productive'

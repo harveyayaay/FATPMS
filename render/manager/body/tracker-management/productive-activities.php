@@ -64,6 +64,9 @@
   </div>
 </div>
 
+<?php include 'confirm-update-modal.php'; ?>
+<?php include 'confirm-add-modal.php'; ?>
+
 
 <style type="text/css">
   .add-container
