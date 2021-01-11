@@ -1,0 +1,2 @@
+<button type="button" class="btn btn-secondary" onclick="editviewMode()"><i class="glyphicon glyphicon-remove"></i> Cancel</button>
+<button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i> Save</button>

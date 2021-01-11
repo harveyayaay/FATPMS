@@ -18,7 +18,7 @@
               
                   
                   <!-- activity management (productive) -->
-                  <?php include 'profile-view.php'; ?>
+                  <?php include 'profile-list-view.php'; ?>
                   <!-- /activity management (productive) -->
 
             </div>
