@@ -17,15 +17,15 @@
       {
         session_start();
         $_SESSION['id'] = $id;
-        if($result_emp_data['employee_position_title'] == 'Manager')
+        if($result_emp_data['employee_position_title'] === 'Manager')
         {
           header("Location: ../manager/body/dashboard/dashboard.php");
         }
-        if($result_emp_data['employee_position_title'] == 'Supervisor')
+        if($result_emp_data['employee_position_title'] === 'Supervisor')
         {
           header("Location: ../supervisor/body/dashboard/dashboard.php");
         }
-        if($result_emp_data['employee_position_title'] == 'Frontliner')
+        if($result_emp_data['employee_position_title'] === 'Frontliner')
         {
           
           header("Location: ../frontliner/body/dashboard/dashboard.php");
