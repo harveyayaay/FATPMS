@@ -1,4 +1,6 @@
-<?php include '../../header/header.php'; ?>
+<?php 
+  include '../../header/header.php';
+?>
 
 <body class="nav-md">
   <div class="container body">

@@ -1,19 +1,17 @@
 <?php
 
-	include_once '../../../process/config/database.php';
-	include_once '../../../process/obj/task-list.php';
+	include_once '../../../../process/config/database.php';
+	include_once '../../../../process/obj/task-list.php';
 
 	$conn = new Database();
-	date_default_timezone_set('Asia/Manila');
 
 	$TaskList = new TaskList($conn->databaseConnection());
 
-	echo $TaskList->task_list_id = $_GET['tid'];
-	echo $TaskList->task_list_title = $_GET['tname'];
-	echo $TaskList->task_list_process_time = $_GET['ptime'];
-	echo $TaskList->task_list_sla = $_GET['sla'];
-	echo $TaskList->task_list_importance = $_GET['select'];
+	$TaskList->task_list_title = $title;
+	$TaskList->task_list_process_time = $ptime;
+	$TaskList->task_list_sla = $sla;
+	$TaskList->task_list_importance = $level;
 	
-	// $TaskList->updateTaskListProd();
+	$TaskList->updateTaskListProd($tid);
 ?>
 

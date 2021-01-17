@@ -26,13 +26,12 @@
 			$this->conn = $db;
 		} // function ends
 
-		function storeInitialTask()
+		function addTask()
 		{
 			$query = 'INSERT INTO task_table
 						SET
 						    task_datetime=:task_datetime,
 						    task_type=:task_type,
-						    task_client_name=:task_client_name,
 						    task_client_id=:task_client_id,
 						    task_date_received=:task_date_received, 
 						    task_start_time=:task_start_time,
@@ -46,7 +45,6 @@
 
 			$this->task_datetime = htmlspecialchars(strip_tags($this->task_datetime));
 			$this->task_type = htmlspecialchars(strip_tags($this->task_type));
-			$this->task_client_name = htmlspecialchars(strip_tags($this->task_client_name));
 			$this->task_client_id = htmlspecialchars(strip_tags($this->task_client_id));
 			$this->task_date_received = htmlspecialchars(strip_tags($this->task_date_received));
 			$this->task_start_time = htmlspecialchars(strip_tags($this->task_start_time));
@@ -58,7 +56,6 @@
 
 			$stmt->bindParam(':task_datetime', $this->task_datetime);
 			$stmt->bindParam(':task_type', $this->task_type);
-			$stmt->bindParam(':task_client_name', $this->task_client_name);
 			$stmt->bindParam(':task_client_id', $this->task_client_id);
 			$stmt->bindParam(':task_date_received', $this->task_date_received);
 			$stmt->bindParam(':task_start_time', $this->task_start_time);
@@ -153,11 +150,11 @@
 		function updateHoldEndTimeTask($id)
 		{
 			$query = 'UPDATE task_table
-						SET
-						    task_hold_end_time=:task_hold_end_time, 
-						    task_end_time=:task_end_time, 
-						    task_status=:task_status
-						    	WHERE task_id LIKE ' . $id;
+								SET
+									task_hold_end_time=:task_hold_end_time, 
+									task_end_time=:task_end_time, 
+									task_status=:task_status
+								WHERE task_id = ' . $id;
 
 			$stmt = $this->conn->prepare($query);
 
@@ -185,7 +182,7 @@
 						SET
 						    task_end_time=:task_end_time, 
 						    task_status=:task_status
-						    	WHERE task_id LIKE ' . $id;
+						    	WHERE task_id = ' . $id;
 
 			$stmt = $this->conn->prepare($query);
 
@@ -476,13 +473,54 @@
 			}
 		} //function ends
 		
-		function getOngoingTaskUsingDateAndEmployeeId($date, $empid)
+		function getOngoingTaskUsingEmployeeId($id)
 		{
 			$query = "SELECT *
 					FROM task_table
-					WHERE task_datetime = '$date'
-					AND task_employee_id = '$empid'
+					WHERE task_employee_id = '$id'
 					AND task_status = 'Ongoing'";
+
+			$stmt = $this->conn->prepare($query);
+
+			if($stmt->execute())
+			{
+				return $stmt;
+			}
+			else
+			{
+				return false;
+			}
+		} //function ends
+
+		function getOnholdTaskUsingEmployeeIdAndDate($id)
+		{
+			$currentdate = date('Y-m-d');
+			$query = "SELECT *
+					FROM task_table
+					WHERE task_employee_id = '$id'
+					AND task_status = 'On-hold'
+					AND task_datetime = '$currentdate'";
+
+			$stmt = $this->conn->prepare($query);
+
+			if($stmt->execute())
+			{
+				return $stmt;
+			}
+			else
+			{
+				return false;
+			}
+		} //function ends
+
+		function getCompletedTaskUsingEmployeeIdAndDate($id)
+		{
+			$currentdate = date('Y-m-d');
+			$query = "SELECT *
+					FROM task_table
+					WHERE task_employee_id = '$id'
+					AND task_status = 'Completed'
+					AND task_datetime = '$currentdate'";
 
 			$stmt = $this->conn->prepare($query);
 
@@ -732,6 +770,63 @@
 
 			$stmt = $this->conn->prepare($query);
 
+			if($stmt->execute())
+			{
+				return $stmt;
+			}
+			else
+			{
+				return false;
+			}
+		} //function ends
+
+		function checkActivityOngoingCurrent($id)
+		{
+			$query = "SELECT COUNT(*) as count_ongoing
+								FROM task_table	
+								WHERE task_employee_id = '$id'
+								AND task_status = 'Ongoing'";
+
+			$stmt = $this->conn->prepare($query);
+			
+			if($stmt->execute())
+			{
+				return $stmt;
+			}
+			else
+			{
+				return false;
+			}
+		} //function ends
+
+		function checkActivityOnholdCurrent($id)
+		{
+			$query = "SELECT COUNT(*) as count_onhold
+								FROM task_table	
+								WHERE task_employee_id = '$id'
+								AND task_status = 'On-hold'";
+
+			$stmt = $this->conn->prepare($query);
+			
+			if($stmt->execute())
+			{
+				return $stmt;
+			}
+			else
+			{
+				return false;
+			}
+		} //function ends
+
+		function checkActivityCompletedCurrent($id)
+		{
+			$query = "SELECT COUNT(*) as count_completed
+								FROM task_table	
+								WHERE task_employee_id = '$id'
+								AND task_status = 'Completed'";
+
+			$stmt = $this->conn->prepare($query);
+			
 			if($stmt->execute())
 			{
 				return $stmt;

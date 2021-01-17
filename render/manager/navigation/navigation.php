@@ -13,7 +13,7 @@
       </div>
       <div class="profile_info">
         <span>Welcome,</span>
-        <h2>Lino Semira</h2>
+        <h2><?php echo $result_emp_data['employee_fname'].' '.$result_emp_data['employee_lname']; ?></h2>
       </div>
     </div>
 

@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  $id = $_SESSION['id'];
+  include '../../../../process/create/employee/getEmployeeUsingId.php'; 
+  $result_emp_data = $result_emp->fetch(PDO::FETCH_ASSOC);
+  date_default_timezone_set("Asia/Manila");
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>

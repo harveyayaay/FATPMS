@@ -11,19 +11,19 @@
       <!-- /top navigation -->
 
       <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="clearfix"></div>
-            <div class="row">
+      <div class="right_col" role="main">
+        <div class="">
+          <div class="clearfix"></div>
+            <div class="row" id="page-change">
               
-                  
-                  <!-- activity management (productive) -->
-                  <?php include 'profile-view.php'; ?>
-                  <!-- /activity management (productive) -->
+                <!-- activity management (productive) -->
+                <?php include 'profile-list-view.php'; ?>
+                <!-- /activity management (productive) -->
 
             </div>
           </div>
         </div>
+      </div>
         <!-- /page content -->
      
     </div>

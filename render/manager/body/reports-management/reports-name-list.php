@@ -81,16 +81,15 @@
             <p class="text-muted font-13 m-b-30">
               The following are the information of each metric that is used to determine the scorecards of the frontliners.
             </p>
-            <div class="col-md-12 col-sm-12 ">  
+            <?php include 'metric-display.php'; ?>
+            <div class="col-md-12 col-sm-12">  
               <div class="x_content">
                 <div class="row">
                   <div class="col-sm-12">
                     <div class="card-box table-responsive">
-                      <table id="table" class="table table-striped jambo_table dt-responsive nowrap" cellspacing="0" width="100%">
-                        <thead>
-                          <td><p class="add-link"><i class="glyphicon glyphicon-plus"></i> Add Metric</p></td>
-                        </thead>
-                      </table>
+                      <div class="x_panel add-container" id="add-metric">
+                        <?php include 'add-metric-div.php'; ?>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -105,10 +104,29 @@
 
 
 <style type="text/css">
+  .label-tab
+  {
+    display: flex;
+    justify-content: space-between;
+  }
   .title-tab
   {
     display: flex;
     justify-content: space-between;
+  }
+  .title-tab:hover
+  {
+    cursor: pointer;
+  }
+  .add-container
+  {
+    background-color: #2A3F54;
+    color: #fff;
+  }
+  .add-link:hover
+  {
+    cursor: pointer;
+    border-bottom: .5px solid #fff;;
   }
 </style>
 

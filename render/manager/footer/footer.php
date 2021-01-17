@@ -1,7 +1,7 @@
-<!-- jQuery -->
+    <!-- jQuery -->
     <script src="../../../../components/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
-   <script src="../../../../components/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../../components/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- FastClick -->
     <script src="../../../../components/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
@@ -49,7 +49,9 @@
     <script src="../../../../components/build/js/custom.min.js"></script>
 
     <!-- Additional AJAX Scripts -->
-    <script src="tracker-management.js"></script>
+    <script src="../../js/employee-management.js"></script>
+    <script src="../../js/tracker-management.js"></script>
+    <script src="../../js/reports-management.js"></script>
 
 
 </html>

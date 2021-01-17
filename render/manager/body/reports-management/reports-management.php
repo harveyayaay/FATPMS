@@ -11,20 +11,20 @@
       <!-- /top navigation -->
 
       <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="clearfix"></div>
-            <div class="row">
+      <div class="right_col" role="main">
+        <div class="">
+          <div class="clearfix"></div>
+            <div class="row" id="page-change">
               
-                  
-                  <!-- name list -->
-                  <?php include 'reports-name-list.php'; ?>
-                  <!-- /name list -->
+              <!-- name list -->
+              <?php include 'reports-name-list.php'; ?>
+              <!-- /name list -->
 
             </div>
           </div>
         </div>
-        <!-- /page content -->
+      </div>
+      <!-- /page content -->
      
     </div>
   </div>
