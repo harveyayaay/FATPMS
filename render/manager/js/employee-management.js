@@ -21,20 +21,26 @@ function viewSpecificProfile(id)
 		"&id="+id;
 	interfaceRequest("profile-preview.php", 'profile-preview', send_data);
 }
-function editviewMode()
+function editViewMode(id)
 { 
   var fname = document.getElementById('field-fname');
   var lname = document.getElementById('field-lname');
   var email = document.getElementById('field-email');
   var contact = document.getElementById('field-contact');
-
+  var position = document.getElementById('field-position');
+  var status = document.getElementById('field-status');
+  var send_data = 
+    "&id="+id;
+    
   if(fname.disabled == true)
   {
     fname.disabled = false;
     lname.disabled = false;
     email.disabled = false;
     contact.disabled = false;
-    interfaceRequest("update-buttons.php", 'change-buttons', null);
+    position.disabled = false;
+    status.disabled = false;
+    interfaceRequest("update-buttons.php", 'change-buttons', send_data);
   }
   else
   {
@@ -42,8 +48,27 @@ function editviewMode()
     lname.disabled = true;
     email.disabled = true;
     contact.disabled = true;
-    interfaceRequest("view-buttons.php", 'change-buttons', null);
+    position.disabled = true;
+    status.disabled = true;
+    interfaceRequest("view-buttons.php", 'change-buttons', send_data); 
   }
-  
 }
+function updateMode(id)
+{ 
+  var fname = document.getElementById('field-fname');
+  var lname = document.getElementById('field-lname');
+  var email = document.getElementById('field-email'); 
+  var contact = document.getElementById('field-contact');
+  var position = document.getElementById('field-position');
+  var status = document.getElementById('field-status');
 
+  var send_data = 
+		"&id="+id+
+		"&field-fname="+fname.value+
+		"&field-lname="+lname.value+
+		"&field-email="+email.value+
+		"&field-contact="+contact.value+
+		"&field-position="+position.value+
+		"&field-status="+status.value;
+	interfaceRequest("update-change.php", 'page-change', send_data);
+}

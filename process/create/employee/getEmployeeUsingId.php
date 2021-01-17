@@ -6,7 +6,6 @@
 
 	$Employee = new Employee($conn->databaseConnection());
 
-	$result_emp = $Employee->getEmployee($id);
+	$result_emp = $Employee->getEmployeeUsingId($id);
 
-	
 ?>

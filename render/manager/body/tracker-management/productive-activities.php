@@ -79,5 +79,4 @@
     cursor: pointer;
     border-bottom: .5px solid #fff;;
   }
-
 </style>

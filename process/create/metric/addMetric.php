@@ -1,6 +1,6 @@
 <?php
-	include_once '../../../process/config/database.php';
-	include_once '../../../process/obj/metric.php';
+	include_once '../../../../process/config/database.php';
+	include_once '../../../../process/obj/metric.php';
 
 	$conn = new Database();
 
@@ -11,6 +11,6 @@
 	$Metric->metric_goal = $goal;
 	$Metric->metric_reference = $reference;
 
-	$Metric->insertMetric();
+	$Metric->addMetric();
 
 ?>

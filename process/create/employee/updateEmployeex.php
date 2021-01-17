@@ -1,6 +1,6 @@
 <?php
-	include_once '../../../process/config/database.php';
-	include_once '../../../process/obj/employee.php';
+	include_once '../../../../process/config/database.php';
+	include_once '../../../../process/obj/employee.php';
 
 	$conn = new Database();
 
@@ -12,5 +12,5 @@
 	$Employee->emp_email = $email;
 	$Employee->emp_contact = $contact;
 
-	$result_emp = $Employee->updateEmployeeProfileUsingEmpId($empid);
+	$result_emp = $Employee->updateEmployee($id);
 ?>

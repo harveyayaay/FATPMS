@@ -168,5 +168,25 @@
 			}
 		} //function  ends
 
+		function getTaskListUsingId($tid)
+		{
+			// used
+			$query = "SELECT *
+					FROM task_list_table
+					WHERE task_list_id = '$tid'";
+
+			$stmt = $this->conn->prepare($query);
+			
+			if($stmt->execute())
+			{
+				return $stmt;
+			}
+			else
+			{
+				return false;
+			}
+		} //function  ends
+		
+
 	} //class ends
 ?>

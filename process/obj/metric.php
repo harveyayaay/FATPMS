@@ -18,7 +18,7 @@
 			$this->conn = $db;
 		} // function ends
 
-		function insertMetric()
+		function addMetric()
 		{
 			$query = "INSERT INTO `metric_table`
 						SET 

@@ -80,14 +80,53 @@
 			}
 		} //function ends
 
-		function getEmployeeUsingEmpId($empid)
+		function getEmployeeUsingId($id)
 		{
 			$query = "SELECT * 
 					FROM employee_account 
-					WHERE employee_id = '$empid'";
+					WHERE employee_id = '$id'";
 
 			$stmt = $this->conn->prepare($query);
 			
+			if($stmt->execute())
+			{
+				return $stmt;
+			}
+			else
+			{
+				return false;
+			}
+		} //function ends
+
+		function updateEmployee($id)
+		{
+			$query = "UPDATE employee_account
+								SET 
+									employee_fname=:employee_fname,
+									employee_lname=:employee_lname,
+									employee_email=:employee_email,
+									employee_contact=:employee_contact,
+									employee_position_title=:employee_position_title,
+									employee_status=:employee_status
+								WHERE 
+									employee_id = '$id'";
+
+			$stmt = $this->conn->prepare($query);
+			
+			$this->emp_fname = htmlspecialchars(strip_tags($this->emp_fname));
+			$this->emp_lname = htmlspecialchars(strip_tags($this->emp_lname));
+			$this->emp_email = htmlspecialchars(strip_tags($this->emp_email));
+			$this->emp_contact = htmlspecialchars(strip_tags($this->emp_contact));
+			$this->emp_pos_title = htmlspecialchars(strip_tags($this->emp_pos_title));
+			$this->emp_status = htmlspecialchars(strip_tags($this->emp_status));
+
+			$stmt->bindParam(':employee_fname', $this->emp_fname);
+			$stmt->bindParam(':employee_lname', $this->emp_lname);
+			$stmt->bindParam(':employee_email', $this->emp_email);
+			$stmt->bindParam(':employee_contact', $this->emp_contact);
+			$stmt->bindParam(':employee_position_title', $this->emp_pos_title);
+			$stmt->bindParam(':employee_status', $this->emp_status);
+
 			if($stmt->execute())
 			{
 				return $stmt;
@@ -155,7 +194,25 @@
 			}
 		} //function ends
 
-	
+		function countEmployeeUsingIdAndPassword($id, $password)
+		{
+			$query = "SELECT COUNT(*) as counted
+							FROM employee_account
+							WHERE employee_id = '$id' 
+							AND employee_password = '$password'";
+
+			$stmt = $this->conn->prepare($query);
+			
+			if($stmt->execute())
+			{
+				return $stmt;
+			}
+			else
+			{
+				return false;
+			}
+		} //function countTaskList() ends
+		
 	} // class ends
 
 

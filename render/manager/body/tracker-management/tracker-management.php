@@ -14,13 +14,13 @@
         <div class="right_col" role="main">
           <div class="">
             <div class="clearfix"></div>
-            <div class="row" id="page-change">
+              <div class="row" id="page-change">
               
                   
                   <!-- activity management (productive) -->
                   <?php include 'productive-activities.php'; ?>
                   <!-- /activity management (productive) -->
-
+              </div>
             </div>
           </div>
         </div>

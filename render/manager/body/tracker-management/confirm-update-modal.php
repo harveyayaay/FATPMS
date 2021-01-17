@@ -9,7 +9,8 @@
           </button>
         </div>
         <div class="modal-body">
-          <b>Confirm Changes?</b>
+          <h4 style="color: #000;">Confirm Changes</h4>
+          <p style="color: #000;">Are you sure that you want to update and save changes?</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
