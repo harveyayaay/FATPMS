@@ -2,9 +2,9 @@
 
 	class Database
 	{
-		private $dbname = 'initial_project_database_design';
-		private $username = 'root';
-		private $password = '';
+		private $dbname = 'u652500557_gemini';
+		private $username = 'u652500557_gemini';
+		private $password = 'geminiCapstone123';
 		private $host = 'localhost';
 		private $connection = null;
 
