@@ -31,9 +31,9 @@
         <div class="animate form login_form">
           <section class="login_content">
             <form method="post" action="check-log.php">
-              <h1>Login Form</h1>
+              <h1>Login Form | Gemini</h1>
               <div>
-                <input type="text" name="checkuser" id="checkuser" class="form-control" placeholder="Username" required="" />
+                <input type="text" name="checkuser" id="checkuser" class="form-control" placeholder="Employee ID Number" required="" />
               </div>
               <div>
                 <input type="password" name="checkpass" id="checkpass" class="form-control" placeholder="Password" required="" />
