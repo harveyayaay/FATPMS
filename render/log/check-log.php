@@ -13,8 +13,7 @@
     include '../../process/create/employee/checkLogAccount.php'; 
     if($result_emp_data = $result_emp->fetch(PDO::FETCH_ASSOC))
     {
-      if($result_emp_data['employee_status'] == 'Active')
-      {
+      
         session_start();
         $_SESSION['id'] = $id;
         if($result_emp_data['employee_position_title'] === 'Manager')
