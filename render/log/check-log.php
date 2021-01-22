@@ -6,7 +6,8 @@
   $result_notif_data = $result_notif->fetch(PDO::FETCH_ASSOC);
   if($result_notif_data['counted'] == 0)
   {
-    header("Location: login.php");
+    echo 'gago';
+    // header("Location: ../../index.php");
   }
   else
   {
